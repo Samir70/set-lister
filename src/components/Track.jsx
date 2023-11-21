@@ -3,7 +3,6 @@ import styles from '../styles/Track.module.css'
 
 function Track(props) {
   const [count, setCount] = useState(0)
-  console.log(props)
   return (
     <div>
       <div className={styles.trackBox}>

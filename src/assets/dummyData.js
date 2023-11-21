@@ -4,3 +4,9 @@ export const dummySong = {
   artist: "The Laaas",
   status: "Gigable",
 }
+
+export const dummySongList = [
+  dummySong,
+  dummySong,
+  dummySong,
+]
