@@ -1,0 +1,21 @@
+.trackBox {
+  margin: 3px;
+  padding: 5px;
+  border: 1px solid  black;
+  border-radius: 8%;
+}
+
+.dataBlock {
+  margin: 0px;
+  padding: 0px;
+}
+
+.songName {
+  font-weight: bold;
+  font-size: large;
+}
+
+.artistName {
+  font-style: italic;
+  font-size: medium;
+}
