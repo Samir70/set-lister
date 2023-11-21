@@ -10,7 +10,6 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -23,7 +22,7 @@ a:hover {
 }
 
 body {
-  margin: 10;
+  margin: 10px;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -48,10 +47,6 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
