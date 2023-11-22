@@ -9,7 +9,7 @@ function Tracklist(props) {
 
   return (
     <>
-      {tracklist.map((t, idx) => {
+      {props.songlist.map((t, idx) => {
         return (
           <Track song={t} key={idx} />
         )
