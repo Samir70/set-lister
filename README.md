@@ -22,6 +22,17 @@ npm install
 
 Indicated that I have an old version of node, but it seems to work for now.
 
+## Components
+
+The project has the following:
+
+- `Track`: a component that displays a single track
+- `Tracklist`: a component that displays a list of tracks
+- `SearchResults`: a component that uses Tracklist to display a list of tracks that can be added to the setlist
+- `Setlist`: a component that uses Tracklist to display a list of tracks that are already in the setlist
+- `Searchbar`: a component used to filter the tracks that are included in SearchResults
+
+Also: there is a top level component call `App`.
 
 #### vite notes
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
