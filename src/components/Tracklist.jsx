@@ -11,7 +11,9 @@ function Tracklist(props) {
     <>
       {props.songlist.map((t, idx) => {
         return (
-          <Track song={t} key={idx} />
+          <Track song={t} key={idx} 
+          handleChange={() => props.onTrackChange(t)} 
+          addOrSubtract={props.addOrSubtract} />
         )
       })}
     </>

@@ -8,13 +8,31 @@ import { dummySongList } from './assets/dummyData'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [setlist, setSetlist] = useState([])
+  const [searchResultList, setSearchResultList] = useState(dummySongList)
+
+
+  const addToSetlist = (track) => {
+    setSetlist([...setlist, track])
+    setSearchResultList(searchResultList.filter(t => t.id !== track.id))
+  }
+  
+  const removeFromSetlist = (track) => {
+    setSearchResultList([...searchResultList, track])
+    setSetlist(setlist.filter(t => t.id !== track.id))
+  }
+
+  const moveTrack = (origin, track) => {
+    // console.log(origin, track)
+    if (origin === "searchResults") { addToSetlist(track) }
+    if (origin === "setlist") { removeFromSetlist(track) }
+  }
 
   return (
     <>
       <SearchBar />
-      <SearchResults tracks={dummySongList} />
-      <Setlist tracks={dummySongList} />
+      <SearchResults tracks={searchResultList} onAction={moveTrack} />
+      <Setlist tracks={setlist} onAction={moveTrack} />
     </>
   )
 }

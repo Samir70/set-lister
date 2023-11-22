@@ -3,11 +3,14 @@ import styles from '../styles/Setlist.module.css'
 import Tracklist from './Tracklist'
 
 function Setlist(props) {
-  const [setlist, setSetlist] = useState(props.tracks)
   const [setlistName, setSetlistName] = useState("")
 
   const handleChange = (e) => {
     setSetlistName(e.target.value)
+  }
+
+  const handleTrackChange = (track) => {
+    props.onAction("setlist", track)
   }
 
   return (
@@ -16,7 +19,9 @@ function Setlist(props) {
       <input id="setlist-name"
         type="text" name="setlist-name"
         value={setlistName} onChange={handleChange} />
-      <Tracklist songlist={setlist} />
+      <Tracklist songlist={props.tracks}
+        addOrSubtract="-"
+        onTrackChange={handleTrackChange} />
     </div>
   )
 }

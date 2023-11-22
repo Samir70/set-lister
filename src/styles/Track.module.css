@@ -1,4 +1,5 @@
 .trackBox {
+  display: flex;
   margin: 3px;
   padding: 5px;
   border: 1px solid  black;
@@ -8,6 +9,11 @@
 .dataBlock {
   margin: 0px;
   padding: 0px;
+}
+
+.toggle {
+  font-size: large;
+  display: inline;
 }
 
 .songName {
