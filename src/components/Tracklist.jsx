@@ -5,7 +5,7 @@ import Track from './Track'
 // Purpose of this component is to render a list of tracks
 
 function Tracklist(props) {
-  const [tracklist, setTracklist] = useState(props.songlist)
+  // const [tracklist, setTracklist] = useState(props.songlist)
 
   return (
     <>
