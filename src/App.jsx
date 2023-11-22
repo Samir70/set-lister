@@ -3,7 +3,6 @@ import './App.css'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import Setlist from './components/Setlist'
-import Tracklist from './components/Tracklist'
 
 import { dummySongList } from './assets/dummyData'
 
@@ -14,9 +13,8 @@ function App() {
   return (
     <>
       <SearchBar />
-      <SearchResults />
-      <Setlist />
-      <Tracklist songlist={dummySongList} />
+      <SearchResults tracks={dummySongList} />
+      <Setlist tracks={dummySongList} />
     </>
   )
 }
