@@ -34,6 +34,25 @@ The project has the following:
 
 Also: there is a top level component call `App`.
 
+## Other packages
+
+I am using `React` via `Vite`. The intension was to host on `netlify`, so I use their package too. And the the package for `airtable`. To pass personal access tokens I use `dotenv`. 
+
+
+```bash
+npm install dotenv
+npm install netlify-cli -g
+npm install airtable
+```
+
+Obviously: the `.env` file is not included in this repository. To run this yourself with your own `airtable` database, you will need to provide your own version of these values (PAT = personal access token, `SONGLIST` is a table in the database):
+
+```bash
+AIR_TABLE_PAT="**********************************"
+AIR_TABLE_BASE_ID="********************"
+AIR_TABLE_SONGLIST_ID="****************"
+```
+
 #### vite notes
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
