@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
@@ -10,13 +10,26 @@ import { dummySongList } from './assets/dummyData'
 function App() {
   const [setlist, setSetlist] = useState([])
   const [searchResultList, setSearchResultList] = useState(dummySongList)
-
+  useEffect(() => {
+    const loadSongs = async () => {
+      try {
+        const res = await fetch('/api/airtableHandler');
+        const songs = await res.json()
+        console.log("loadsongs ran")
+        setSearchResultList(songs)
+      } catch (err) {
+        console.log("loadSongs:", err)
+      }
+    }
+    loadSongs()
+    return () => {}
+  }, [])
 
   const addToSetlist = (track) => {
     setSetlist([...setlist, track])
     setSearchResultList(searchResultList.filter(t => t.id !== track.id))
   }
-  
+
   const removeFromSetlist = (track) => {
     setSearchResultList([...searchResultList, track])
     setSetlist(setlist.filter(t => t.id !== track.id))

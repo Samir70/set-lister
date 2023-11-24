@@ -1,7 +1,7 @@
 exports.recordToSong = (rec2) => {
   return {
     id: rec2.id,
-    songTitle: rec2.fields["Song title"],
+    title: rec2.fields["Song title"],
     artist: rec2.fields.Artist,
     status: rec2.fields.Status,
     setPosition: rec2.fields["Set position"],
