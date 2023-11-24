@@ -21,8 +21,9 @@ function App() {
         console.log("loadSongs:", err)
       }
     }
+    // comment the below to stay with the dummySonglist
     loadSongs()
-    return () => {}
+    return () => { }
   }, [])
 
   const addToSetlist = (track) => {
@@ -42,11 +43,13 @@ function App() {
   }
 
   return (
-    <>
+    <div id="app">
       <SearchBar />
-      <SearchResults tracks={searchResultList} onAction={moveTrack} />
-      <Setlist tracks={setlist} onAction={moveTrack} />
-    </>
+      <div id="list-container">
+        <SearchResults tracks={searchResultList} onAction={moveTrack} />
+        <Setlist tracks={setlist} onAction={moveTrack} />
+      </div>
+    </div>
   )
 }
 

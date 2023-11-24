@@ -8,7 +8,7 @@ function Tracklist(props) {
   // const [tracklist, setTracklist] = useState(props.songlist)
 
   return (
-    <>
+    <div className="styles.trackList">
       {props.songlist.map((t, idx) => {
         return (
           <Track song={t} key={idx} 
@@ -16,7 +16,7 @@ function Tracklist(props) {
           addOrSubtract={props.addOrSubtract} />
         )
       })}
-    </>
+    </div>
   )
 }
 

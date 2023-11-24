@@ -1,0 +1,11 @@
+#list-container {
+  display: flex;
+  justify-content: space-between;
+  width: 95vw;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* #app {
+  border: 1px solid black;
+} */
