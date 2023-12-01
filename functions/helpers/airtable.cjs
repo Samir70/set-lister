@@ -8,5 +8,6 @@ var base = Airtable.base(process.env.AIR_TABLE_BASE_ID);
 
 // var base = new Airtable({ apiKey: process.env.AIR_TABLE_PAT }).base();
 const songTable = base(process.env.AIR_TABLE_SONGLIST_ID)
+const gigTable = base(process.env.AIR_TABLE_GIGLIST_ID)
 
-module.exports = { songTable }
+module.exports = { songTable, gigTable }
