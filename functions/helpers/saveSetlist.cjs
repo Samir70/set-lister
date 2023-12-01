@@ -18,5 +18,4 @@ exports.saveSetlist = async (event) => {
     console.log(err)
     return formattedReturn(500, { msg: "ERROR: trying to write a giglist" })
   }
-  console.log("need to save a setlist")
 }
