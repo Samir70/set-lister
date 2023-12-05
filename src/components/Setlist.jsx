@@ -13,6 +13,21 @@ function Setlist(props) {
     props.onAction("setlist", track)
   }
 
+  const saveSetlist = async () => {
+    try {
+      await fetch('/api/airtableHandler', {
+        method: "POST",
+        body: JSON.stringify({
+          Venue: setlistName,
+          Date: "2023-12-24",
+          Songs: props.tracks.map(s => s.id)
+        })
+      })
+    } catch (err) {
+      console.log("saveSetlist in Setlist component:", err)
+    }
+  }
+
   return (
     <div>
       <label htmlFor="setlist-name">Setlist name: </label>
@@ -22,6 +37,7 @@ function Setlist(props) {
       <Tracklist songlist={props.tracks}
         addOrSubtract="-"
         onTrackChange={handleTrackChange} />
+      <button onClick={saveSetlist}>Save</button>
     </div>
   )
 }
