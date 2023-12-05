@@ -4,6 +4,7 @@ import Tracklist from './Tracklist'
 
 function Setlist(props) {
   const [setlistName, setSetlistName] = useState("")
+  const [gigDate, setGigDate] = useState("")
 
   const handleChange = (e) => {
     setSetlistName(e.target.value)
@@ -13,13 +14,18 @@ function Setlist(props) {
     props.onAction("setlist", track)
   }
 
+  const handleDateChange = (e) => {
+    setGigDate(e.target.value)
+    console.log("new date:", gigDate)
+  }
+
   const saveSetlist = async () => {
     try {
       await fetch('/api/airtableHandler', {
         method: "POST",
         body: JSON.stringify({
           Venue: setlistName,
-          Date: "2023-12-24",
+          Date: gigDate,
           Songs: props.tracks.map(s => s.id)
         })
       })
@@ -30,10 +36,18 @@ function Setlist(props) {
 
   return (
     <div>
-      <label htmlFor="setlist-name">Setlist name: </label>
-      <input id="setlist-name"
-        type="text" name="setlist-name"
-        value={setlistName} onChange={handleChange} />
+      <div>
+        <label htmlFor="setlist-name">Venue: </label>
+        <input id="setlist-name"
+          type="text" name="setlist-name"
+          value={setlistName} onChange={handleChange} />
+      </div>
+      <div>
+        <label htmlFor="gig-date">Date: </label>
+        <input id="gig-date"
+          type="date" name="gig-date"
+          value={gigDate} onChange={handleDateChange} />
+      </div>
       <Tracklist songlist={props.tracks}
         addOrSubtract="-"
         onTrackChange={handleTrackChange} />
