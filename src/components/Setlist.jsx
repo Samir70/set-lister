@@ -5,8 +5,10 @@ import Tracklist from './Tracklist'
 function Setlist(props) {
   const [setlistName, setSetlistName] = useState("")
   const [gigDate, setGigDate] = useState("")
+  const currentDate = new Date().toISOString().split("T")[0]
+  console.log(currentDate)
 
-  const handleChange = (e) => {
+  const handleNameChange = (e) => {
     setSetlistName(e.target.value)
   }
 
@@ -16,7 +18,6 @@ function Setlist(props) {
 
   const handleDateChange = (e) => {
     setGigDate(e.target.value)
-    console.log("new date:", gigDate)
   }
 
   const saveSetlist = async () => {
@@ -40,13 +41,14 @@ function Setlist(props) {
         <label htmlFor="setlist-name">Venue: </label>
         <input id="setlist-name"
           type="text" name="setlist-name"
-          value={setlistName} onChange={handleChange} />
+          value={setlistName} onChange={handleNameChange} />
       </div>
       <div>
         <label htmlFor="gig-date">Date: </label>
         <input id="gig-date"
           type="date" name="gig-date"
-          value={gigDate} onChange={handleDateChange} />
+          value={gigDate} min={currentDate}
+          onChange={handleDateChange} />
       </div>
       <Tracklist songlist={props.tracks}
         addOrSubtract="-"
