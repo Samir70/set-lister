@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import styles from '../styles/SearchBar.module.css'
 
-function SearchBar() {
+function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState('')
   const handleChangeTerm = (e) => {
     setSearchTerm(e.target.value)
+    props.onAction(e.target.value)
   }
 
   return (

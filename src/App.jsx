@@ -12,7 +12,8 @@ function App() {
   const [setlist, setSetlist] = useState([])
   const [searchResultList, setSearchResultList] = useState(dummySongList)
   const [allSongsList, setAllSongsList] = useState(dummySongList)
-  const [searchTerm, setSearchTerm] = useState("bl")
+  const [searchTerm, setSearchTerm] = useState("")
+  
   useEffect(() => {
     const loadSongs = async () => {
       try {
@@ -21,7 +22,7 @@ function App() {
         console.log("loadsongs ran")
         setSearchResultList(songs)
         setAllSongsList(songs)
-        updateLists()
+        // filterBySearch("")
       } catch (err) {
         console.log("loadSongs:", err)
       }
@@ -49,25 +50,27 @@ function App() {
       selectedSongs[track.id] = false
       removeFromSetlist(track)
     }
-    updateLists()
+    filterBySearch(searchTerm)
   }
 
-  const updateLists = () => {
-    // console.log("updateLists", selectedSongs)
+  const filterBySearch = (str) => {
+    console.log("filterBySearch", str, allSongsList.length)
+    str = str.toLowerCase()
     setSearchResultList(allSongsList.filter(s =>
-      (s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.artist.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (s.title.toLowerCase().includes(str) ||
+        s.artist.toLowerCase().includes(str)) &&
       !selectedSongs[s.id]
     ))
   }
 
-  const filterBySearch = (searchTerm) => {
-    setSetlist()
+  const updateSearchTerm = (str) => {
+    setSearchTerm(str)
+    filterBySearch(str)
   }
 
   return (
     <div id="app">
-      <SearchBar />
+      <SearchBar onAction={updateSearchTerm} />
       <div id="list-container">
         <SearchResults tracks={searchResultList} onAction={moveTrack} />
         <Setlist tracks={setlist} onAction={moveTrack} />
