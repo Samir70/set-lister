@@ -6,7 +6,6 @@ function Setlist(props) {
   const [setlistName, setSetlistName] = useState("")
   const [gigDate, setGigDate] = useState("")
   const currentDate = new Date().toISOString().split("T")[0]
-  console.log(currentDate)
 
   const handleNameChange = (e) => {
     setSetlistName(e.target.value)
